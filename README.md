@@ -47,19 +47,24 @@ Simplemente abre `main.html` en tu navegador favorito. ¡No necesitas instalar n
 Cada proyecto tiene esta estructura:
 ```html
 <article class="project-card">
-  <div class="project-image-container">
-    <img src="img/tu-proyecto.jpg" alt="Proyecto">
-  </div>
-  <div class="project-information">
-    <h3 class="project-title">Nombre del Proyecto</h3>
-    <p class="project-description">Descripción detallada...</p>
-    <div class="technology-stack-list">
-      <span class="technology-badge">HTML</span>
-      <span class="technology-badge">CSS</span>
-    </div>
-    <a href="tu-repositorio" class="button-primary">Ver en GitHub</a>
-  </div>
-</article>
+      <div class="project-image-container" onclick="openImageModal(this)">
+        <img src="img/galería.png" alt="galería">
+       </div>
+      <div class="project-information">
+        <h3 class="project-title">Mi Galería de Fotos</h3>
+        <p class="project-description">
+          Galería de Fotos relacionadas con Asturias 
+        </p>
+        <div class="technology-stack-list">
+          <span class="technology-badge">HTML</span>
+          <span class="technology-badge">CSS</span>
+          <span class="technology-badge">JavaScript</span>
+        </div>
+        <a href="https://github.com/verogb75-byte/Mis_proyectos_1/tree/main/Mi-Galer-a-de-Fotos" target="_blank" class="button-primary">
+          Ver en GitHub
+        </a>
+      </div>
+    </article>
 ```
 
 ## 📁 Estructura del proyecto
@@ -73,7 +78,9 @@ portfolio/
 └── img/                # Carpeta para tus imágenes (crear)
     ├── galería.jpg
     ├── portuarios.jpg
-    └── tienda.jpg
+    ├── tienda.jpg
+    ├── fondo_1.jpg
+    └── fondo_2.jpg
 ```
 
 ## 🎨 Personalización de colores
@@ -103,9 +110,75 @@ background: #e76f0d;   /* Naranja por defecto */
 🖥️
 
 <!-- Por esto: -->
-<img src="img/mi-proyecto.jpg" alt="Mi Proyecto">
+<img src="img/galería.png" alt="galería">
 ```
 
+ ## Funcionalidades JavaScript
+
+📱 **Menú de Navegación Móvil**
+```js
+toggleMobileMenu()
+```
+Abre o cierra el menú de navegación en dispositivos móviles.
+Funcionamiento:
+Busca el elemento con ID navigationMenu.
+Alterna la clase is-active para mostrar u ocultar el menú.
+```js
+function toggleMobileMenu()
+```
+
+🖼️ **Modal de Imágenes**
+```js
+openImageModal(element)
+```
+Abre un modal mostrando la imagen contenida dentro del elemento seleccionado.
+Funcionamiento:
+Busca una etiqueta <img> dentro del elemento clicado.
+Copia la fuente (src) de la imagen al modal.
+Activa el modal agregando la clase is-active.
+Parámetro:
+element: contenedor HTML que incluye una imagen.
+```js
+function openImageModal(element)
+```
+```js
+closeImageModal()
+```
+Cierra el modal de imagen.
+Funcionamiento:
+Elimina la clase is-active del modal.
+```js
+function closeImageModal()
+```
+
+✨ **Animaciones al Hacer Scroll**
+**Intersection Observer**
+Se utiliza la API IntersectionObserver para animar elementos cuando entran en pantalla.
+Funcionamiento:
+Observa elementos con la clase .project-card.
+Cuando un elemento es visible al menos un 10%, se le añade la clase is-visible.
+```js
+const scrollObserver = new IntersectionObserver(...)
+```
+Esto permite aplicar animaciones CSS de forma eficiente.
+
+📌 **Observación de Tarjetas de Proyectos**
+Todas las tarjetas con la clase .project-card son observadas para activar animaciones al hacer scroll.
+```js
+const projectCards = document.querySelectorAll('.project-card');
+```
+
+🔗 **Cierre Automático del Menú al Navegar**
+Al hacer clic en cualquier enlace del menú de navegación:
+Funcionamiento:
+Se elimina la clase is-active del menú.
+Mejora la experiencia de usuario en dispositivos móviles.
+```js
+const navigationLinks = document.querySelectorAll('.navigation-menu a');
+```
+
+🚀 **Notas Finales**
+El script es ligero y eficiente.
 
 
 ## 📚 Tecnologías utilizadas
@@ -154,4 +227,4 @@ Si tienes dudas o sugerencias:
 
 
 
-Hecho con ❤️ por estudiantes para estudiantes
+Hecho con ❤️ 
